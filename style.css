@@ -1,0 +1,535 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+      scroll-behavior: smooth;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #fff;
+      color: #111;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 8%;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .logo h2 {
+      color: #111;
+      font-weight: 600;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: red;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-buttons button {
+      border: none;
+      padding: 8px 20px;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .volunteer {
+      background: #333;
+      color: white;
+    }
+
+    .donate {
+      background: red;
+      color: white;
+    }
+
+    .volunteer:hover {
+      background: #555;
+    }
+
+    .donate:hover {
+      background: #cc0000;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      padding: 60px 8%;
+      min-height: 650px;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+      background-image: url('Images/blackbg.jpeg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .hero-overlay-img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      /* Controls the width relative to the screen */
+      max-width: 650px;
+      /* INCREASED MAX-WIDTH TO MAKE IMAGE BIGGER */
+      height: auto;
+      z-index: 1;
+      opacity: 0.9;
+    }
+
+    .hero-overlay-img img {
+      width: 100%;
+      height: auto;
+      /* Ensures the image aspect ratio is maintained */
+      display: block;
+    }
+
+    .hero-content {
+      z-index: 2;
+      position: relative;
+      padding-bottom: 320px;
+      /* INCREASED PADDING TO PUSH TEXT UP SIGNIFICANTLY */
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      /* REDUCED FONT SIZE SLIGHTLY */
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: 3px;
+      line-height: 1.3;
+    }
+
+    .hero-content h1 .red-title {
+      color: red;
+    }
+
+    .subtitle {
+      background: red;
+      color: white;
+      padding: 8px 15px;
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .left-content {
+      position: absolute;
+      bottom: 40px;
+      left: 8%;
+      width: 250px;
+      text-align: left;
+      z-index: 2;
+    }
+
+    .left-content p {
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .read-more {
+      background: red;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 3px;
+    }
+
+    .read-more:hover {
+      background: #cc0000;
+    }
+
+    .right-content {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      z-index: 2;
+    }
+
+    .social-icons {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .social-icons a i {
+      color: white;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    .social-icons a i:hover {
+      color: red;
+      transform: scale(1.2);
+    }
+
+    .icon-feature {
+      margin-top: 50px;
+    }
+
+    .icon-feature i {
+      font-size: 3rem;
+      color: red;
+    }
+
+    /* ABOUT */
+    .about {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 8%;
+      gap: 40px;
+      background: #1a1a1a;
+    }
+
+    .about-text {
+      width: 50%;
+    }
+
+    .about-text h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .about-text h2 span {
+      color: red;
+    }
+
+    .about-text p {
+      color: #bbb;
+      margin-bottom: 20px;
+    }
+
+    .about-text ul li {
+      list-style: none;
+      color: #eee;
+      margin: 8px 0;
+    }
+
+    .about-img {
+      width: 45%;
+    }
+
+    .about-img img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* EVENTS */
+    /* PROJECTS (EVENTS) SECTION STYLES */
+    .events {
+      background: #000;
+      text-align: center;
+      padding: 80px 8%;
+    }
+
+    .events h2 {
+      font-size: 36px;
+      margin-bottom: 50px;
+      /* Increased margin */
+    }
+
+    .events h2 span {
+      color: red;
+    }
+
+    .event-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .event-card {
+      background: #1a1a1a;
+      border-radius: 15px;
+      width: 280px;
+      /* Adjusted width */
+      height: 280px;
+      /* Adjusted height to be squarer */
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid #fb8c8c;
+      /* Added a subtle border */
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.1);
+    }
+
+    .icon-wrapper {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      /* Makes the background circular */
+      background-color: red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      transition: background-color 0.3s;
+    }
+
+    .event-card i {
+      font-size: 50px;
+      /* Large icon size */
+      color: white;
+      /* Icon color */
+      transition: color 0.3s;
+    }
+
+    .event-card h3 {
+      color: #fff;
+      /* Changed title to white for better contrast */
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    /* Hover effect for icon */
+    .event-card:hover .icon-wrapper {
+      background-color: white;
+      /* Background becomes red on hover */
+    }
+
+    .event-card:hover .icon-wrapper i {
+      color: red;
+      /* Icon becomes white on hover */
+    }
+
+    /* Remove paragraph styling as it's no longer used */
+    .event-card p {
+      display: none;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: #1a1a1a;
+      text-align: center;
+      padding: 80px 8%;
+    }
+
+    .contact h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .contact h2 span {
+      color: red;
+    }
+
+    .contact p {
+      color: #bbb;
+      margin-bottom: 25px;
+    }
+
+    .contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact input,
+    .contact textarea {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: none;
+      background: #222;
+      color: white;
+    }
+
+    .contact button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact button:hover {
+      background: #cc0000;
+    }
+
+    /* FOOTER STYLES */
+    .footer {
+      background: #000;
+      color: white;
+      text-align: center;
+      /* Center all content blocks */
+      padding: 40px 8%;
+      border-top: 1px solid #222;
+    }
+
+    /* THIS IS THE KEY FIX FOR SIDE-BY-SIDE ALIGNMENT */
+    .footer-logo {
+      display: flex;
+      /* Makes items inside arrange horizontally */
+      justify-content: center;
+      /* Horizontally centers the items together */
+      align-items: center;
+      /* Vertically aligns the items */
+      gap: 15px;
+      /* Adds space between the logo and the text */
+      margin-bottom: 10px;
+      /* Space below the logo/title line */
+    }
+
+    /* Style the logo image itself */
+    .footer-logo img {
+      height: 45px;
+      /* Controls the height of the small logo */
+      width: auto;
+    }
+
+    /* Style the text next to the logo */
+    .footer-logo h3 {
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0;
+      /* Remove default browser margins */
+    }
+
+    .footer-copyright {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social a i {
+      color: white;
+      font-size: 1.3rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .social a i:hover {
+      color: red;
+      transform: translateY(-3px);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+
+      .hero,
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-content,
+      .hero-img,
+      .about-img,
+      .about-text {
+        width: 100%;
+      }
+
+      .navbar {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .nav-buttons {
+        margin-top: 10px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .left-content,
+      .right-content {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .right-content {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .blood-drop {
+        display: none;
+      }
+
+      .social-icons {
+        flex-direction: row;
+      }
+
+    }
