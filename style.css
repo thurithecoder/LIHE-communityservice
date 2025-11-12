@@ -1,3 +1,4 @@
+/* === BASE STYLES === */
 * {
   margin: 0;
   padding: 0;
@@ -56,11 +57,33 @@ img {
   transition: all 0.3s ease;
 }
 
-.navbar.scrolled {
+/* === [WAVY BORDER ADDED HERE] === */
+.navbar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -40px;
+  width: 100%;
+  height: 40px;
+  /* 
+     - fill='%23ffffff' sets the color to white.
+     - fill-opacity='0.95' sets the opacity to 95% to match the navbar.
+  */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%23ffffff' fill-opacity='0.95' d='M0,32L48,32C96,32,192,32,288,26.7C384,21.3,480,10.7,576,10.7C672,10.7,768,21.3,864,24C960,26.7,1056,21.3,1152,18.7C1248,16,1344,16,1392,16L1440,16L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* Add backdrop-filter to match the navbar's frosted glass effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* For Safari support */
+}
+
+
+/* .navbar.scrolled {
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
   padding: 10px 8%;
-}
+} */
 
 .logo {
   display: flex;
@@ -109,6 +132,11 @@ img {
 
 .menu-toggle.active span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -7px);
+}
+
+nav {
+  display: flex;
+  align-items: center;
 }
 
 nav ul {
@@ -188,34 +216,39 @@ nav ul li a.active::after {
   box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
 }
 
-/* === HERO SECTION (Updated for Perfect Responsiveness) === */
+/* === HERO SECTION === */
 .hero {
   display: flex;
+  flex-direction: column;
+  /* Changed for better mobile layout */
   align-items: center;
   justify-content: center;
-  background: url('Images/fullbg.png') no-repeat center center/cover;
-  padding: 0 8%;
+  background: var(--bg-dark) url('Images/fullbg.png') no-repeat center center/cover;
+  padding: 120px 8% 0;
+  /* Adjusted padding */
   min-height: 100vh;
   position: relative;
   text-align: center;
   overflow: hidden;
 }
 
-/* Optional: smooth overlay for contrast */
-.hero::after {
-  content: "";
+.hero-overlay-img {
   position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 650px;
+  z-index: 1;
 }
 
 .hero-content {
-  position: relative;
   z-index: 2;
+  position: relative;
   max-width: 900px;
   margin: 0 auto;
-  padding-bottom: 320px;
+  padding-bottom: 30%;
+  /* Space for the overlay image */
 }
 
 .hero-content h1 {
@@ -233,8 +266,11 @@ nav ul li a.active::after {
 }
 
 .subtitle {
-  background: var(--primary-red);
-  color: #fff;
+  background: rgba(255, 0, 0, 0.15);
+  /* Changed to a low-opacity red */
+  border: 1px solid var(--light-red);
+  /* Added a border to define the shape */
+  color: white;
   padding: 10px 20px;
   display: inline-block;
   margin-top: 20px;
@@ -246,160 +282,17 @@ nav ul li a.active::after {
   box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
 }
 
-/* Volunteer image / person overlay */
-.hero-overlay-img {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 55%;
-  max-width: 650px;
-  opacity: 0.95;
-  z-index: 1;
-}
-
-/* === FLOATING ICONS AROUND HERO IMAGE (grouped near fingers, adjusted lower & nearer) === */
-.floating-icons {
-  position: absolute;
-  bottom: 210px;
-  /* lower a bit */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 600px;
-  /* slightly narrower to bring groups closer together */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Groups */
-.icon-group {
-  position: relative;
-  width: 120px;
-  height: 120px;
-}
-
-/* Left group — slightly nearer to center */
-.left-group {
-  transform: translateX(120px);
-}
-
-/* Right group — slightly nearer to center */
-.right-group {
-  transform: translateX(-120px);
-}
-
-/* Each icon inside circular orbit */
-.icon-group i {
-  position: absolute;
-  font-size: 1.8rem;
-  color: var(--text-white);
-  opacity: 0.9;
-  animation: floatIcon 3s ease-in-out infinite;
-}
-
-/* Circular positioning of icons */
-.left-group i:nth-child(1) {
-  top: 35%;
-  left: 5%;
-  animation-delay: 0s;
-}
-
-.left-group i:nth-child(2) {
-  top: 5%;
-  left: 40%;
-  animation-delay: 0.5s;
-}
-
-.left-group i:nth-child(3) {
-  top: 35%;
-  right: 5%;
-  animation-delay: 1s;
-}
-
-.right-group i:nth-child(1) {
-  top: 35%;
-  left: 5%;
-  animation-delay: 1.5s;
-}
-
-.right-group i:nth-child(2) {
-  top: 5%;
-  left: 40%;
-  animation-delay: 2s;
-}
-
-.right-group i:nth-child(3) {
-  top: 35%;
-  right: 5%;
-  animation-delay: 2.5s;
-}
-
-@keyframes floatIcon {
-
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 0.9;
-  }
-
-  50% {
-    transform: translateY(-6px) scale(1.1);
-    opacity: 1;
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .floating-icons {
-    bottom: 180px;
-    max-width: 480px;
-  }
-
-  .icon-group {
-    width: 100px;
-    height: 100px;
-  }
-
-  .icon-group i {
-    font-size: 1.4rem;
-  }
-
-  .left-group {
-    transform: translateX(-45px);
-  }
-
-  .right-group {
-    transform: translateX(45px);
-  }
-}
-
-@media (max-width: 480px) {
-  .floating-icons {
-    bottom: 150px;
-  }
-
-  .icon-group i {
-    font-size: 1.2rem;
-  }
-}
-
-/* Left and right side sections */
 .left-content {
   position: absolute;
   bottom: 40px;
-  left: 8%;
+  left: 16%;
   width: 280px;
   text-align: left;
   z-index: 2;
-  transform: translateX(45%);
 }
 
 .left-content p {
-  color: var(--text-white);
+  color: var(--text-light-gray);
   font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 15px;
@@ -407,7 +300,7 @@ nav ul li a.active::after {
 
 .read-more {
   background: var(--primary-red);
-  color: #fff;
+  color: white;
   border: none;
   padding: 12px 28px;
   font-weight: 600;
@@ -437,7 +330,6 @@ nav ul li a.active::after {
   z-index: 2;
 }
 
-/* === SOCIAL ICONS === */
 .social-icons {
   display: flex;
   flex-direction: column;
@@ -445,8 +337,8 @@ nav ul li a.active::after {
 }
 
 .social-icons a {
+  transition: transform 0.3s ease;
   color: white;
-  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-icons a:hover {
@@ -482,91 +374,6 @@ nav ul li a.active::after {
 
   20% {
     transform: scale(1);
-  }
-}
-
-/* === RESPONSIVE HERO BREAKPOINTS === */
-/* Tablets and small laptops */
-@media (max-width: 992px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 100px 5%;
-  }
-
-  .hero-content {
-    padding-bottom: 40px;
-  }
-
-  .hero-overlay-img {
-    position: relative;
-    bottom: 0;
-    width: 70%;
-    max-width: 480px;
-    transform: none;
-    margin: 0 auto;
-  }
-
-  .left-content,
-  .right-content {
-    position: static;
-    transform: none;
-    width: 100%;
-    text-align: center;
-    margin: 30px auto;
-  }
-
-  .right-content {
-    flex-direction: row;
-    justify-content: center;
-    gap: 30px;
-  }
-
-  .social-icons {
-    flex-direction: row;
-  }
-
-  .icon-feature {
-    margin-top: 0;
-  }
-}
-
-/* Phones */
-@media (max-width: 600px) {
-  .hero-content h1 {
-    font-size: 1.8rem;
-    letter-spacing: 1.5px;
-  }
-
-  .hero-overlay-img {
-    max-width: 320px;
-    opacity: 0.85;
-  }
-
-  .subtitle {
-    font-size: 0.75rem;
-    padding: 8px 12px;
-  }
-
-  .read-more {
-    padding: 10px 20px;
-    font-size: 0.85rem;
-  }
-}
-
-/* Smallest devices (under 400px) */
-@media (max-width: 400px) {
-  .hero-content h1 {
-    font-size: 1.4rem;
-    letter-spacing: 1px;
-  }
-
-  .subtitle {
-    font-size: 0.7rem;
-  }
-
-  .social-icons a i {
-    font-size: 1.1rem;
   }
 }
 
@@ -877,7 +684,6 @@ nav ul li a.active::after {
 
   .hero-overlay-img {
     max-width: 550px;
-    width: 55%;
   }
 
   .left-content {
@@ -893,29 +699,60 @@ nav ul li a.active::after {
   .navbar {
     flex-wrap: wrap;
     padding: 12px 5%;
+    justify-content: space-between;
+  }
+
+  .logo {
+    order: 1;
+    /* Logo first */
   }
 
   .menu-toggle {
     display: flex;
-    order: 3;
+    /* Show the hamburger */
+    order: 2;
+    /* Hamburger second */
+  }
+
+  .nav-buttons {
+    display: none;
+    /* <-- HIDE buttons by default */
+    order: 4;
+    /* Buttons will show after links */
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 15px;
   }
 
   nav {
-    order: 4;
+    order: 3;
+    /* Nav links container third */
     width: 100%;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.3s ease-in-out;
   }
 
+  /* This rule expands the nav menu when it's active */
   nav.active {
     max-height: 400px;
+    /* Set to a height large enough for your links */
     margin-top: 15px;
+    /* This adds some nice spacing */
   }
+
+  /* This shows the buttons ONLY when the nav is active */
+  nav.active+.nav-buttons {
+    display: flex;
+  }
+
+  /* ... (keep the rest of your 900px rules: nav.active, nav ul, etc.) ... */
 
   nav ul {
     flex-direction: column;
     gap: 0;
+    width: 100%;
   }
 
   nav ul li {
@@ -924,50 +761,60 @@ nav ul li a.active::after {
     border-bottom: 1px solid #eee;
   }
 
+  nav ul li:first-child {
+    border-top: 1px solid #eee;
+  }
+
   nav ul li a {
     display: block;
     padding: 15px;
   }
 
-  .nav-buttons {
-    order: 2;
-    margin-left: auto;
-  }
-
   .hero {
     padding: 100px 5% 0;
     min-height: auto;
-  }
-
-  .hero-overlay-img {
-    width: 70%;
-    max-width: 450px;
-    position: relative;
-    bottom: -5px;
-    transform: translateX(0);
-    left: auto;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   .hero-content {
-    padding-bottom: 40px;
-    order: -1;
+    order: 1;
+    padding-bottom: 20px;
+    transform: none;
+    /* Reset transform */
   }
 
-  .hero-content h1 {
-    font-size: 2.5rem;
+  .hero-overlay-img {
+    order: 2;
+    position: relative;
+    /* Change from absolute */
+    transform: none;
+    /* Reset transform */
+    left: auto;
+    bottom: -5px;
+    /* Adjust if needed */
+    width: 90%;
+    max-width: 450px;
+    margin: 20px auto 0;
   }
 
-  .left-content,
-  .right-content {
+  .left-content {
+    order: 3;
     position: static;
     transform: none;
     width: 100%;
     text-align: center;
-    margin: 30px auto;
+    margin: 40px auto 20px;
   }
 
   .right-content {
+    order: 4;
+    position: static;
+    transform: none;
+    width: 100%;
+    text-align: center;
+    margin: 20px auto 40px;
     flex-direction: row;
     justify-content: center;
     gap: 30px;
@@ -975,6 +822,7 @@ nav ul li a.active::after {
 
   .social-icons {
     flex-direction: row;
+    gap: 30px;
   }
 
   .icon-feature {
@@ -1029,7 +877,7 @@ nav ul li a.active::after {
 
   .hero-overlay-img {
     max-width: 320px;
-    opacity: 0.75;
+    opacity: 0.9;
   }
 
   .hero-content {
@@ -1037,18 +885,18 @@ nav ul li a.active::after {
   }
 
   .hero-content h1 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     letter-spacing: 1.5px;
     line-height: 1.2;
   }
 
   .subtitle {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     padding: 8px 12px;
   }
 
   .left-content p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .read-more {
@@ -1147,13 +995,21 @@ nav ul li a.active::after {
   }
 
   .hero-content h1 {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     letter-spacing: 1px;
   }
 
   .subtitle {
     font-size: 0.7rem;
     padding: 6px 10px;
+  }
+
+  .left-content {
+    margin-top: 30px;
+  }
+
+  .right-content {
+    margin-bottom: 30px;
   }
 
   .event-card {
@@ -1194,7 +1050,152 @@ nav ul li a.active::after {
   .nav-buttons,
   .social-icons,
   .footer,
-  .contact button {
+  .contact button,
+  .hero-overlay-img {
     display: none;
+  }
+}
+
+
+/* === SERVICES PAGE STYLES === */
+/* (Add this to the bottom of your style.css file) */
+
+/* --- New Page Header --- */
+.page-header {
+  background: var(--bg-darker);
+  /* Re-using your theme */
+  padding: 80px 8% 60px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  /* Responsive font size */
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.page-header h1 span {
+  color: var(--primary-red);
+  /* Re-using your theme */
+}
+
+.page-header .header-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-gray);
+  /* Re-using your theme */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- New Detailed Service Layout --- */
+.services-container {
+  /* This uses your 'about' section's background */
+  background: var(--bg-card);
+  padding: 80px 8%;
+}
+
+.service-detail {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 60px;
+  /* Space between each service */
+  background: var(--bg-darker);
+  /* Darker card background */
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  /* Good practice */
+  transition: all 0.3s ease;
+}
+
+.service-detail:hover {
+  border-color: var(--primary-red);
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.1);
+}
+
+/* This is the alternating layout class */
+.service-detail.reverse {
+  flex-direction: row-reverse;
+}
+
+.service-image {
+  flex: 1;
+  /* Takes up half the space */
+  min-width: 40%;
+}
+
+.service-image img {
+  width: 100%;
+  height: 350px;
+  /* Fixed height for consistency */
+  object-fit: cover;
+  /* Prevents image stretching */
+  border-radius: 10px;
+}
+
+.service-text {
+  flex: 1.5;
+  /* Takes up slightly more space */
+  min-width: 50%;
+}
+
+.service-text h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--primary-red);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.service-text h2 i {
+  margin-right: 12px;
+  font-size: 1.8rem;
+  /* Icon size */
+  vertical-align: middle;
+}
+
+.service-text p {
+  color: var(--text-gray);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+/* Re-using your existing .read-more button style */
+.service-text .read-more {
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+
+/* --- Responsive for Service Page --- */
+@media (max-width: 900px) {
+  .services-container {
+    padding: 60px 5%;
+  }
+
+  /* Stack layout on mobile */
+  .service-detail,
+  .service-detail.reverse {
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+  }
+
+  .service-image img {
+    height: 250px;
+    /* Smaller image on mobile */
+  }
+
+  .service-text {
+    text-align: center;
+    /* Center text on mobile */
+  }
+
+  .service-text h2 {
+    font-size: 1.6rem;
   }
 }
