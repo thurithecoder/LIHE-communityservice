@@ -57,6 +57,13 @@ img {
   transition: all 0.3s ease;
 }
 
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 /* === [WAVY BORDER ADDED HERE] === */
 .navbar::after {
   content: '';
@@ -65,18 +72,13 @@ img {
   bottom: -40px;
   width: 100%;
   height: 40px;
-  /* 
-     - fill='%23ffffff' sets the color to white.
-     - fill-opacity='0.95' sets the opacity to 95% to match the navbar.
-  */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%23ffffff' fill-opacity='0.95' d='M0,32L48,32C96,32,192,32,288,26.7C384,21.3,480,10.7,576,10.7C672,10.7,768,21.3,864,24C960,26.7,1056,21.3,1152,18.7C1248,16,1344,16,1392,16L1440,16L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E");
   background-size: cover;
   background-repeat: no-repeat;
-  /* Add backdrop-filter to match the navbar's frosted glass effect */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  /* For Safari support */
 }
+
 
 
 /* .navbar.scrolled {
@@ -181,6 +183,8 @@ nav ul li a.active::after {
 .nav-buttons {
   display: flex;
   gap: 12px;
+  margin-left: 2rem;
+
 }
 
 .nav-buttons button {
@@ -245,7 +249,7 @@ nav ul li a.active::after {
 .hero-content {
   z-index: 2;
   position: relative;
-  max-width: 900px;
+  max-width: 1024px;
   margin: 0 auto;
   padding-bottom: 30%;
   /* Space for the overlay image */
@@ -1053,149 +1057,5 @@ nav ul li a.active::after {
   .contact button,
   .hero-overlay-img {
     display: none;
-  }
-}
-
-
-/* === SERVICES PAGE STYLES === */
-/* (Add this to the bottom of your style.css file) */
-
-/* --- New Page Header --- */
-.page-header {
-  background: var(--bg-darker);
-  /* Re-using your theme */
-  padding: 80px 8% 60px;
-  text-align: center;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.page-header h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  /* Responsive font size */
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-
-.page-header h1 span {
-  color: var(--primary-red);
-  /* Re-using your theme */
-}
-
-.page-header .header-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-gray);
-  /* Re-using your theme */
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* --- New Detailed Service Layout --- */
-.services-container {
-  /* This uses your 'about' section's background */
-  background: var(--bg-card);
-  padding: 80px 8%;
-}
-
-.service-detail {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  margin-bottom: 60px;
-  /* Space between each service */
-  background: var(--bg-darker);
-  /* Darker card background */
-  padding: 40px;
-  border-radius: 15px;
-  border: 1px solid var(--border-color);
-  overflow: hidden;
-  /* Good practice */
-  transition: all 0.3s ease;
-}
-
-.service-detail:hover {
-  border-color: var(--primary-red);
-  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.1);
-}
-
-/* This is the alternating layout class */
-.service-detail.reverse {
-  flex-direction: row-reverse;
-}
-
-.service-image {
-  flex: 1;
-  /* Takes up half the space */
-  min-width: 40%;
-}
-
-.service-image img {
-  width: 100%;
-  height: 350px;
-  /* Fixed height for consistency */
-  object-fit: cover;
-  /* Prevents image stretching */
-  border-radius: 10px;
-}
-
-.service-text {
-  flex: 1.5;
-  /* Takes up slightly more space */
-  min-width: 50%;
-}
-
-.service-text h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--primary-red);
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-.service-text h2 i {
-  margin-right: 12px;
-  font-size: 1.8rem;
-  /* Icon size */
-  vertical-align: middle;
-}
-
-.service-text p {
-  color: var(--text-gray);
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-bottom: 30px;
-}
-
-/* Re-using your existing .read-more button style */
-.service-text .read-more {
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-
-
-/* --- Responsive for Service Page --- */
-@media (max-width: 900px) {
-  .services-container {
-    padding: 60px 5%;
-  }
-
-  /* Stack layout on mobile */
-  .service-detail,
-  .service-detail.reverse {
-    flex-direction: column;
-    gap: 30px;
-    padding: 30px;
-  }
-
-  .service-image img {
-    height: 250px;
-    /* Smaller image on mobile */
-  }
-
-  .service-text {
-    text-align: center;
-    /* Center text on mobile */
-  }
-
-  .service-text h2 {
-    font-size: 1.6rem;
   }
 }
