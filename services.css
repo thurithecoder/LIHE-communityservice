@@ -19,16 +19,18 @@ html {
 
 body {
     /* Applied via Tailwind `bg-gray-950` */
-    background: radial-gradient(circle at top, #2a0000, #000000 50%);
-    /* font-family: 'Poppins', sans-serif; */
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.1), transparent);
+    font-family: 'Poppins', sans-serif;
 }
 
 /* === NAVBAR STYLES (NEW) === */
 .navbar {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     color: #111;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 12px 8%;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -306,7 +308,7 @@ nav#main-nav ul li a.active::after {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: conic-gradient(from 90deg at 40% -25%, var(--primary-red), var(--dark-red), var(--light-red), var(--dark-red), var(--primary-red));
+    /* background: conic-gradient(from 90deg at 40% -25%, var(--primary-red), var(--dark-red), var(--light-red), var(--dark-red), var(--primary-red)); */
     filter: blur(10px);
     opacity: 0;
     transform: scale(0.98);
@@ -372,4 +374,56 @@ nav#main-nav ul li a.active::after {
         padding-top: 5rem;
     }
 
+}
+
+.footer {
+    background: var(--bg-dark);
+    text-align: center;
+    padding: 50px 8%;
+    border-top: 1px solid #222;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    height: 45px;
+}
+
+.footer-logo h3 {
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-copyright {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social a {
+    transition: transform 0.3s ease;
+    color: white;
+}
+
+.social a:hover {
+    transform: translateY(-3px);
+    color: var(--primary-red);
+}
+
+.social a i {
+    font-size: 1.4rem;
 }
