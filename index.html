@@ -25,10 +25,10 @@
         <nav>
             <ul>
                 <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Service</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
         <div class="nav-buttons">
@@ -67,21 +67,69 @@
 
     <!-- ABOUT SECTION -->
     <section class="about" id="about">
-        <div class="about-img">
-            <img src="Images/volunteers.jpg" alt="Student Volunteers">
-        </div>
-        <div class="about-text">
-            <h2>Fulfilling a Need, <span>Building a Future</span></h2>
-            <p>LIHE Community Connect is a student-focused initiative designed to bridge the gap between academic
-                learning and practical community service. We understand the importance of finding relevant projects for
-                your coursework. Our mission is to connect you with a diverse range of organizations and initiatives
-                where you can contribute meaningfully.</p>
-            <ul>
-                <li>✔ Find projects tailored to your field of study.</li>
-                <li>✔ Gain practical experience and develop new skills.</li>
-                <li>✔ Make a tangible difference in the local community.</li>
-                <li>✔ Fulfill your community service subject requirements.</li>
-            </ul>
+        <div class="about-content-wrapper">
+            <div class="about-text-content">
+                <h2>Fulfilling a Need, <span>Building a Future</span></h2>
+                <p>LIHE Community Connect is a student-focused initiative designed to bridge the gap between academic
+                    learning and practical community service. We understand the importance of finding relevant projects
+                    for
+                    your coursework. Our mission is to connect you with a diverse range of organizations and initiatives
+                    where you can contribute meaningfully.</p>
+                <ul>
+                    <li>✔ Find projects tailored to your field of study.</li>
+                    <li>✔ Gain practical experience and develop new skills.</li>
+                    <li>✔ Make a tangible difference in the local community.</li>
+                    <li>✔ Fulfill your community service subject requirements.</li>
+                </ul>
+            </div>
+
+            <!-- Image Gallery / Slider -->
+            <div id="gallery-wrapper" class="gallery-wrapper">
+                <div id="hero-image-gallery" class="hero-image-gallery">
+                    <!-- Gallery Images -->
+                    <div class="gallery-item">
+                        <img src="Images/scroll (1).jpg" alt="Community Service">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Images/scroll (2).jpg" alt="Student Volunteers">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Images/scroll (3).jpg" alt="Making Impact">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Images/scroll (4).jpg" alt="Team Work">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Images/scroll (5).jpg" alt="Community Engagement">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Images/scroll (6).jpg" alt="Community Engagement">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Images/scroll (7).jpg" alt="Community Engagement">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Images/scroll (8).jpg" alt="Community Engagement">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Images/scroll (9).jpg" alt="Community Engagement">
+                        <div class="gallery-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="Images/scroll (10).jpg" alt="Community Engagement">
+                        <div class="gallery-overlay"></div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </section>
 
@@ -163,6 +211,49 @@
             nav.classList.toggle('active');
             menuToggle.classList.toggle('active');
         });
+
+        // --- Hero Image Gallery Autoscroll ---
+        const galleryWrapper = document.getElementById('gallery-wrapper');
+        const gallery = document.getElementById('hero-image-gallery');
+
+        if (gallery && galleryWrapper) {
+            let isPaused = false;
+            const scrollSpeed = 0.8; // Controls the speed of the scroll
+
+            // 1. Clone all images for a seamless loop
+            const images = Array.from(gallery.children);
+            images.forEach(image => {
+                const clone = image.cloneNode(true);
+                gallery.appendChild(clone);
+            });
+
+            // 2. Set initial scroll to the start of the *second* set of images
+            // This allows us to scroll "left to right" (decreasing scrollLeft)
+            gallery.scrollLeft = gallery.scrollWidth / 2;
+
+            function animateScroll() {
+                if (!isPaused) {
+                    gallery.scrollLeft -= scrollSpeed;
+
+                    // 3. If scroll reaches the beginning (end of the first set), reset
+                    if (gallery.scrollLeft <= 0) {
+                        gallery.scrollLeft = gallery.scrollWidth / 2;
+                    }
+                }
+                requestAnimationFrame(animateScroll);
+            }
+
+            // 4. Pause on hover
+            galleryWrapper.addEventListener('mouseenter', () => {
+                isPaused = true;
+            });
+            galleryWrapper.addEventListener('mouseleave', () => {
+                isPaused = false;
+            });
+
+            // 5. Start the animation
+            requestAnimationFrame(animateScroll);
+        }
     </script>
 
 </body>
