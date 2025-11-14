@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | LIHE Community Connect</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -17,6 +19,11 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
 
         .contact-hero::before {
@@ -28,10 +35,16 @@
             height: 600px;
             background: radial-gradient(circle, rgba(255, 0, 0, 0.1), transparent);
             border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .contact-hero h1 {
-            font-size: 3.2rem;
+            font-size: clamp(2rem, 5vw, 3.2rem);
             margin-bottom: 1rem;
             color: var(--text-white);
             position: relative;
@@ -43,33 +56,27 @@
         }
 
         .contact-hero p {
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             color: var(--text-gray);
             max-width: 700px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            line-height: 1.6;
         }
 
         /* Contact Main Section */
         .contact-main {
-            padding: 80px 8%;
+            padding: 80px 0;
             background: radial-gradient(circle at bottom left, #2a0000, #000000);
         }
 
-        .contact-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-        }
-
-        /* Contact Info Cards */
+        /* Contact Info Cards - Using Flexbox */
         .contact-info {
             display: flex;
             flex-direction: column;
             gap: 25px;
+            height: 100%;
         }
 
         .info-card {
@@ -81,6 +88,7 @@
             display: flex;
             align-items: flex-start;
             gap: 20px;
+            flex: 1;
         }
 
         .info-card:hover {
@@ -99,10 +107,15 @@
             justify-content: center;
             background: rgba(255, 0, 0, 0.1);
             border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .info-content {
+            flex: 1;
         }
 
         .info-content h3 {
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             margin-bottom: 8px;
             color: var(--text-white);
         }
@@ -110,12 +123,14 @@
         .info-content p {
             color: var(--text-gray);
             line-height: 1.6;
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
         }
 
         .info-content a {
             color: var(--primary-red);
             text-decoration: none;
             transition: color 0.3s ease;
+            word-break: break-word;
         }
 
         .info-content a:hover {
@@ -130,10 +145,13 @@
             border-radius: 15px;
             padding: 45px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .contact-form-container h2 {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
             margin-bottom: 10px;
             color: var(--text-white);
         }
@@ -141,17 +159,11 @@
         .contact-form-container .subtitle {
             color: var(--text-gray);
             margin-bottom: 30px;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
         }
 
         .form-group {
             margin-bottom: 25px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
         }
 
         .form-group label {
@@ -159,7 +171,7 @@
             color: var(--text-white);
             margin-bottom: 8px;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
         }
 
         .form-group input,
@@ -171,7 +183,7 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             color: var(--text-white);
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
             font-family: 'Poppins', sans-serif;
             transition: all 0.3s ease;
         }
@@ -195,7 +207,7 @@
             border: none;
             padding: 15px 40px;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -216,13 +228,13 @@
 
         /* Map Section */
         .map-section {
-            padding: 80px 8%;
+            padding: 80px 0;
             background: var(--bg-darker);
         }
 
         .map-section h2 {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 40px;
             color: var(--text-white);
         }
@@ -232,8 +244,6 @@
         }
 
         .map-container {
-            max-width: 1200px;
-            margin: 0 auto;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 15px 50px rgba(255, 0, 0, 0.2);
@@ -247,47 +257,21 @@
             display: block;
         }
 
-        .map-placeholder {
-            width: 100%;
-            height: 450px;
-            background: linear-gradient(135deg, var(--bg-card), var(--bg-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .map-placeholder i {
-            font-size: 4rem;
-            color: var(--primary-red);
-        }
-
-        .map-placeholder p {
-            color: var(--text-gray);
-            font-size: 1.1rem;
-        }
-
         /* FAQ Section */
         .faq-section {
-            padding: 80px 8%;
+            padding: 80px 0;
             background: radial-gradient(circle at top, #2a0000, #000000);
         }
 
         .faq-section h2 {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 50px;
             color: var(--text-white);
         }
 
         .faq-section h2 span {
             color: var(--primary-red);
-        }
-
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
         }
 
         .faq-item {
@@ -309,9 +293,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 20px;
             color: var(--text-white);
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: clamp(0.9rem, 1.8vw, 1.05rem);
             transition: all 0.3s ease;
         }
 
@@ -322,6 +307,7 @@
         .faq-question i {
             color: var(--primary-red);
             transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
 
         .faq-item.active .faq-question i {
@@ -338,105 +324,21 @@
             padding: 0 30px 25px 30px;
             color: var(--text-gray);
             line-height: 1.7;
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
         }
 
         .faq-item.active .faq-answer {
             max-height: 500px;
         }
 
-        @media (max-width: 968px) {
-            .contact-hero h1 {
-                font-size: 2.3rem;
-            }
-
-            .contact-hero p {
-                font-size: 1rem;
-                padding: 0 20px;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form-container {
-                padding: 30px 25px;
-            }
-
-            .contact-form-container h2 {
-                font-size: 1.7rem;
-            }
-
-            .contact-form-container .subtitle {
-                font-size: 0.9rem;
-            }
-        }
-
+        /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
             .contact-hero {
                 padding: 80px 5% 50px;
             }
 
-            .contact-hero h1 {
-                font-size: 2rem;
-            }
-
-            .contact-main {
-                padding: 60px 5%;
-            }
-
-            .map-section h2,
-            .faq-section h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .contact-hero h1 {
-                font-size: 1.8rem;
-                line-height: 1.3;
-            }
-
-            .contact-hero p {
-                font-size: 0.9rem;
-            }
-
             .contact-form-container {
-                padding: 25px 20px;
-            }
-
-            .contact-form-container h2 {
-                font-size: 1.5rem;
-                margin-bottom: 8px;
-            }
-
-            .contact-form-container .subtitle {
-                font-size: 0.85rem;
-                margin-bottom: 25px;
-            }
-
-            .faq-question {
-                padding: 20px;
-                font-size: 0.95rem;
-            }
-
-            .faq-answer-content {
-                padding: 0 20px 20px 20px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .contact-hero h1 {
-                font-size: 1.5rem;
-            }
-
-            .contact-hero p {
-                font-size: 0.85rem;
+                padding: 30px 20px;
             }
 
             .info-card {
@@ -449,12 +351,50 @@
                 font-size: 1.5rem;
             }
 
-            .info-content h3 {
-                font-size: 1.1rem;
+            .faq-question {
+                padding: 20px;
             }
 
-            .contact-form-container h2 {
-                font-size: 1.3rem;
+            .faq-answer-content {
+                padding: 0 20px 20px 20px;
+            }
+
+            .map-container iframe {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact-hero {
+                padding: 60px 5% 40px;
+            }
+
+            .contact-form-container {
+                padding: 25px 15px;
+            }
+
+            .info-card {
+                padding: 20px 15px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .info-icon {
+                min-width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+
+            .faq-question {
+                padding: 15px;
+            }
+
+            .faq-answer-content {
+                padding: 0 15px 15px 15px;
+            }
+
+            .map-container iframe {
+                height: 300px;
             }
         }
     </style>
@@ -494,190 +434,234 @@
 
     <!-- Contact Main Section -->
     <section class="contact-main">
-        <div class="contact-container">
-            <!-- Contact Information -->
-            <div class="contact-info">
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Visit Us</h3>
-                        <p>Lincoln Institute of Higher Education<br>
-                            123 Education Street<br>
-                            Metro City, MC 12345</p>
+        <div class="container-fluid px-3 px-md-4 px-lg-5">
+            <div class="row g-4 g-lg-5">
+                <!-- Contact Information -->
+                <div class="col-lg-5 col-xl-4">
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Visit Us</h3>
+                                <p>Lincoln Institute of Higher Education<br>
+                                    123 Education Street<br>
+                                    Metro City, MC 12345</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Call Us</h3>
+                                <p>Office: <a href="tel:+15551234567">+1 (555) 123-4567</a><br>
+                                    Hotline: <a href="tel:+15559876543">+1 (555) 987-6543</a></p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Email Us</h3>
+                                <p>General: <a href="mailto:info@liheconnect.org">info@liheconnect.org</a><br>
+                                    Support: <a href="mailto:support@liheconnect.org">support@liheconnect.org</a></p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Office Hours</h3>
+                                <p>Monday - Friday: 9:00 AM - 5:00 PM<br>
+                                    Saturday: 10:00 AM - 2:00 PM<br>
+                                    Sunday: Closed</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Call Us</h3>
-                        <p>Office: <a href="tel:+15551234567">+1 (555) 123-4567</a><br>
-                            Hotline: <a href="tel:+15559876543">+1 (555) 987-6543</a></p>
+                <!-- Contact Form -->
+                <div class="col-lg-7 col-xl-8">
+                    <div class="contact-form-container">
+                        <h2>Send Us a Message</h2>
+                        <p class="subtitle">Fill out the form below and we'll get back to you within 24 hours.</p>
+                        <form id="contactForm">
+                            <div class="row g-3 g-md-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name *</label>
+                                        <input type="text" id="firstName" name="firstName" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name *</label>
+                                        <input type="text" id="lastName" name="lastName" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row g-3 g-md-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email Address *</label>
+                                        <input type="email" id="email" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="volunteer">Volunteer Inquiry</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                    <option value="general">General Question</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="feedback">Feedback</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
                     </div>
                 </div>
-
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Email Us</h3>
-                        <p>General: <a href="mailto:info@liheconnect.org">info@liheconnect.org</a><br>
-                            Support: <a href="mailto:support@liheconnect.org">support@liheconnect.org</a></p>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Office Hours</h3>
-                        <p>Monday - Friday: 9:00 AM - 5:00 PM<br>
-                            Saturday: 10:00 AM - 2:00 PM<br>
-                            Sunday: Closed</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form -->
-            <div class="contact-form-container">
-                <h2>Send Us a Message</h2>
-                <p class="subtitle">Fill out the form below and we'll get back to you within 24 hours.</p>
-                <form id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject *</label>
-                        <select id="subject" name="subject" required>
-                            <option value="">Select a subject</option>
-                            <option value="volunteer">Volunteer Inquiry</option>
-                            <option value="partnership">Partnership Opportunity</option>
-                            <option value="general">General Question</option>
-                            <option value="support">Technical Support</option>
-                            <option value="feedback">Feedback</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
             </div>
         </div>
     </section>
 
     <!-- Map Section -->
     <section class="map-section">
-        <h2>Find <span>Our Location</span></h2>
-        <div class="map-container">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.5287887916247!2d151.20668631521207!3d-33.87242838065046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae3f87654321%3A0x1234567890abcdef!2sLevel%208%2F175%20Liverpool%20St%2C%20Sydney%20NSW%202000%2C%20Australia!5e0!3m2!1sen!2sau!4v1699999999999!5m2!1sen!2sau"
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+        <div class="container-fluid px-3 px-md-4 px-lg-5">
+            <h2>Find <span>Our Location</span></h2>
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-10">
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.5287887916247!2d151.20668631521207!3d-33.87242838065046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae3f87654321%3A0x1234567890abcdef!2sLevel%208%2F175%20Liverpool%20St%2C%20Sydney%20NSW%202000%2C%20Australia!5e0!3m2!1sen!2sau!4v1699999999999!5m2!1sen!2sau"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
     <section class="faq-section">
-        <h2>Frequently Asked <span>Questions</span></h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How do I register as a volunteer?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Click the "Volunteer" button in the navigation menu to start your registration. You'll need to
-                        create an account, complete your profile, and browse available service opportunities that match
-                        your interests.
-                    </div>
-                </div>
-            </div>
+        <div class="container-fluid px-3 px-md-4 px-lg-5">
+            <h2>Frequently Asked <span>Questions</span></h2>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10 col-xl-8">
+                    <div class="faq-container">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How do I register as a volunteer?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    Click the "Volunteer" button in the navigation menu to start your registration. You'll need to
+                                    create an account, complete your profile, and browse available service opportunities that match
+                                    your interests.
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Are the service opportunities verified?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Yes! We carefully vet all partner organizations to ensure they provide meaningful, legitimate
-                        service opportunities. Your safety and experience are our top priorities.
-                    </div>
-                </div>
-            </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Are the service opportunities verified?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    Yes! We carefully vet all partner organizations to ensure they provide meaningful, legitimate
+                                    service opportunities. Your safety and experience are our top priorities.
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I get service hours verified for my coursework?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Absolutely! All completed service hours through our platform can be verified and documented for
-                        your academic requirements. Organizations provide official verification upon completion.
-                    </div>
-                </div>
-            </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Can I get service hours verified for my coursework?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    Absolutely! All completed service hours through our platform can be verified and documented for
+                                    your academic requirements. Organizations provide official verification upon completion.
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How can my organization partner with LIHE Community Connect?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        We'd love to partner with you! Please contact us using the form above or email us at
-                        partnerships@liheconnect.org with information about your organization and the service
-                        opportunities you can offer.
-                    </div>
-                </div>
-            </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How can my organization partner with LIHE Community Connect?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    We'd love to partner with you! Please contact us using the form above or email us at
+                                    partnerships@liheconnect.org with information about your organization and the service
+                                    opportunities you can offer.
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Is there a fee to use the platform?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        No! LIHE Community Connect is completely free for Lincoln Institute students. Our platform is
-                        funded to ensure all students have equal access to community service opportunities.
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Is there a fee to use the platform?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    No! LIHE Community Connect is completely free for Lincoln Institute students. Our platform is
+                                    funded to ensure all students have equal access to community service opportunities.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="Images/LOGO.png" alt="LIHE Sydney Logo">
+            <h3>LINCOLN STUDENTS COMMUNITY</h3>
+        </div>
+        <p class="footer-copyright">© 2025 Lincoln Institute of Higher Education. All Rights Reserved.</p>
+        <div class="social">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
         // Mobile menu toggle
         const menuToggle = document.querySelector('.menu-toggle');

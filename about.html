@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | LIHE Community Connect</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -17,6 +19,11 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
 
         .about-hero::before {
@@ -28,10 +35,16 @@
             height: 600px;
             background: radial-gradient(circle, rgba(255, 0, 0, 0.1), transparent);
             border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .about-hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
             margin-bottom: 1rem;
             color: var(--text-white);
             position: relative;
@@ -43,23 +56,24 @@
         }
 
         .about-hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--text-gray);
             max-width: 800px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            line-height: 1.6;
         }
 
         /* Mission Vision Values Grid */
         .mvv-section {
-            padding: 80px 8%;
+            padding: 80px 0;
             background: var(--bg-darker);
         }
 
         .mvv-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 30px;
             margin-top: 40px;
         }
@@ -73,6 +87,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            flex: 1 1 300px;
         }
 
         .mvv-card::before {
@@ -97,13 +112,13 @@
         }
 
         .mvv-icon {
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 5vw, 3rem);
             color: var(--primary-red);
             margin-bottom: 20px;
         }
 
         .mvv-card h3 {
-            font-size: 1.8rem;
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
             margin-bottom: 15px;
             color: var(--text-white);
         }
@@ -111,17 +126,18 @@
         .mvv-card p {
             color: var(--text-gray);
             line-height: 1.8;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         /* Team Section */
         .team-section {
-            padding: 80px 8%;
+            padding: 80px 0;
             background: radial-gradient(circle at center, #2a0000, #000000);
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 50px;
             color: var(--text-white);
         }
@@ -210,30 +226,33 @@
 
         /* Stats Section */
         .stats-section {
-            padding: 80px 8%;
+            padding: 80px 0;
             background: var(--bg-darker);
         }
 
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 40px;
             text-align: center;
+            justify-content: center;
         }
 
         .stat-card {
             padding: 30px;
+            flex: 1 1 200px;
+            min-width: 180px;
         }
 
         .stat-number {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             color: var(--primary-red);
             margin-bottom: 10px;
         }
 
         .stat-label {
-            font-size: 1.1rem;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
             color: var(--text-gray);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -241,21 +260,25 @@
 
         /* Story Section */
         .story-section {
-            padding: 80px 8%;
+            padding: 80px 0;
             background: radial-gradient(circle at top right, #2a0000, #000000);
         }
 
         .story-content {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
             gap: 60px;
             align-items: center;
         }
 
+        .story-text {
+            flex: 1 1 400px;
+        }
+
         .story-text h2 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 25px;
             color: var(--text-white);
         }
@@ -272,6 +295,7 @@
 
         .story-image {
             position: relative;
+            flex: 1 1 400px;
         }
 
         .story-image img {
@@ -280,103 +304,17 @@
             box-shadow: 0 20px 60px rgba(255, 0, 0, 0.2);
         }
 
-        @media (max-width: 968px) {
+        @media (max-width: 768px) {
             .about-hero {
                 padding: 80px 5% 60px;
             }
 
-            .about-hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .story-content {
-                grid-template-columns: 1fr;
-            }
-
-            .mvv-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-
-            .mvv-section,
-            .team-section,
-            .stats-section,
-            .story-section {
-                padding: 60px 5%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .about-hero h1 {
-                font-size: 2.2rem;
-                line-height: 1.3;
-            }
-
-            .about-hero p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .mvv-card h3 {
-                font-size: 1.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .about-hero {
-                padding: 70px 4% 50px;
-            }
-
-            .about-hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .about-hero p {
-                font-size: 0.95rem;
-            }
-
-            .section-title {
-                font-size: 1.7rem;
-            }
-
             .mvv-card {
-                padding: 30px 25px;
+                padding: 30px 20px;
             }
 
-            .stat-number {
-                font-size: 2.8rem;
-            }
-
-            .story-text h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .about-hero h1 {
-                font-size: 1.5rem;
-            }
-
-            .mvv-icon {
-                font-size: 2.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
+            .stat-card {
+                padding: 20px;
             }
         }
     </style>
@@ -417,143 +355,177 @@
 
     <!-- Mission Vision Values -->
     <section class="mvv-section">
-        <h2 class="section-title">Our <span>Foundation</span></h2>
-        <div class="mvv-grid">
-            <div class="mvv-card">
-                <div class="mvv-icon">
-                    <i class="fas fa-bullseye"></i>
+        <div class="container-fluid px-3 px-md-4 px-lg-5">
+            <h2 class="section-title">Our <span>Foundation</span></h2>
+            <div class="mvv-grid">
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Mission</h3>
+                    <p>To connect Lincoln Institute students with meaningful community service opportunities that enhance
+                        their learning experience while making a positive impact on society.</p>
                 </div>
-                <h3>Mission</h3>
-                <p>To connect Lincoln Institute students with meaningful community service opportunities that enhance
-                    their learning experience while making a positive impact on society.</p>
-            </div>
-            <div class="mvv-card">
-                <div class="mvv-icon">
-                    <i class="fas fa-eye"></i>
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Vision</h3>
+                    <p>To be the leading platform that transforms student volunteers into community leaders through
+                        accessible, impactful service projects aligned with their educational goals.</p>
                 </div>
-                <h3>Vision</h3>
-                <p>To be the leading platform that transforms student volunteers into community leaders through
-                    accessible, impactful service projects aligned with their educational goals.</p>
-            </div>
-            <div class="mvv-card">
-                <div class="mvv-icon">
-                    <i class="fas fa-heart"></i>
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Values</h3>
+                    <p>Integrity, compassion, collaboration, and excellence guide every connection we make between students
+                        and community organizations seeking positive change.</p>
                 </div>
-                <h3>Values</h3>
-                <p>Integrity, compassion, collaboration, and excellence guide every connection we make between students
-                    and community organizations seeking positive change.</p>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
     <section class="stats-section">
-        <h2 class="section-title">Our <span>Impact</span></h2>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Active Volunteers</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">150+</div>
-                <div class="stat-label">Partner Organizations</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">10k+</div>
-                <div class="stat-label">Service Hours</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">95%</div>
-                <div class="stat-label">Student Satisfaction</div>
+        <div class="container-fluid px-3 px-md-4 px-lg-5">
+            <h2 class="section-title">Our <span>Impact</span></h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Active Volunteers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Partner Organizations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10k+</div>
+                    <div class="stat-label">Service Hours</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Student Satisfaction</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Story Section -->
     <section class="story-section">
-        <div class="story-content">
-            <div class="story-text">
-                <h2>Our <span>Story</span></h2>
-                <p>LIHE Community Connect was born from a simple observation: students needed a better way to find
-                    community service opportunities that aligned with their studies and career aspirations.</p>
-                <p>What started as a small initiative by a group of passionate Lincoln Institute students has grown into
-                    a thriving platform that connects hundreds of students with organizations making real change in our
-                    communities.</p>
-                <p>Today, we're proud to be the bridge between academic excellence and community impact, helping
-                    students discover their potential while serving those in need.</p>
-            </div>
-            <div class="story-image">
-                <img src="Images/volunteers.jpg" alt="Our Story">
+        <div class="container-fluid px-3 px-md-4 px-lg-5">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Our <span>Story</span></h2>
+                    <p>LIHE Community Connect was born from a simple observation: students needed a better way to find
+                        community service opportunities that aligned with their studies and career aspirations.</p>
+                    <p>What started as a small initiative by a group of passionate Lincoln Institute students has grown into
+                        a thriving platform that connects hundreds of students with organizations making real change in our
+                        communities.</p>
+                    <p>Today, we're proud to be the bridge between academic excellence and community impact, helping
+                        students discover their potential while serving those in need.</p>
+                </div>
+                <div class="story-image">
+                    <img src="Images/volunteers.jpg" alt="Our Story">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
     <section class="team-section">
-        <h2 class="section-title">Meet Our <span>Team</span></h2>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="team-img">
-                    <i class="fas fa-user-circle"></i>
-                </div>
-                <div class="team-info">
-                    <h4>Sarah Johnson</h4>
-                    <p class="role">Founder & Director</p>
-                    <p>Passionate about connecting students with meaningful opportunities to make a difference.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
+        <div class="container-fluid px-3 px-md-4 px-lg-5">
+            <h2 class="section-title">Meet Our <span>Team</span></h2>
+            <div class="row g-4 mt-3">
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="team-info">
+                            <h4>Sarah Johnson</h4>
+                            <p class="role">Founder & Director</p>
+                            <p>Passionate about connecting students with meaningful opportunities to make a difference.</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="team-card">
-                <div class="team-img">
-                    <i class="fas fa-user-circle"></i>
-                </div>
-                <div class="team-info">
-                    <h4>Michael Chen</h4>
-                    <p class="role">Community Coordinator</p>
-                    <p>Building bridges between students and organizations for maximum impact.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="team-info">
+                            <h4>Michael Chen</h4>
+                            <p class="role">Community Coordinator</p>
+                            <p>Building bridges between students and organizations for maximum impact.</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="team-card">
-                <div class="team-img">
-                    <i class="fas fa-user-circle"></i>
-                </div>
-                <div class="team-info">
-                    <h4>Emily Rodriguez</h4>
-                    <p class="role">Student Outreach Lead</p>
-                    <p>Helping students find their perfect community service match.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="team-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p class="role">Student Outreach Lead</p>
+                            <p>Helping students find their perfect community service match.</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="team-card">
-                <div class="team-img">
-                    <i class="fas fa-user-circle"></i>
-                </div>
-                <div class="team-info">
-                    <h4>David Thompson</h4>
-                    <p class="role">Tech & Operations</p>
-                    <p>Ensuring our platform runs smoothly to serve students and partners.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="team-info">
+                            <h4>David Thompson</h4>
+                            <p class="role">Tech & Operations</p>
+                            <p>Ensuring our platform runs smoothly to serve students and partners.</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="Images/LOGO.png" alt="LIHE Sydney Logo">
+            <h3>LINCOLN STUDENTS COMMUNITY</h3>
+        </div>
+        <p class="footer-copyright">© 2025 Lincoln Institute of Higher Education. All Rights Reserved.</p>
+        <div class="social">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         // Mobile menu toggle
