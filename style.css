@@ -477,6 +477,7 @@ nav ul li a.active::after {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
+  padding-top: 60px;
   padding-bottom: 35%;
   /* Space for the overlay image */
 }
@@ -794,15 +795,15 @@ nav ul li a.active::after {
 }
 
 .gallery-item:nth-child(1) {
-  transform: rotate(3deg);
+  transform: rotate(4deg);
 }
 
 .gallery-item:nth-child(2) {
-  transform: rotate(-2deg);
+  transform: rotate(-4deg);
 }
 
 .gallery-item:nth-child(3) {
-  transform: rotate(1deg);
+  transform: rotate(4deg);
 }
 
 .gallery-item:nth-child(4) {
@@ -810,7 +811,27 @@ nav ul li a.active::after {
 }
 
 .gallery-item:nth-child(5) {
-  transform: rotate(2deg);
+  transform: rotate(4deg);
+}
+
+.gallery-item:nth-child(6) {
+  transform: rotate(-4deg);
+}
+
+.gallery-item:nth-child(7) {
+  transform: rotate(4deg);
+}
+
+.gallery-item:nth-child(8) {
+  transform: rotate(-4deg);
+}
+
+.gallery-item:nth-child(9) {
+  transform: rotate(4deg);
+}
+
+.gallery-item:nth-child(10) {
+  transform: rotate(-3deg);
 }
 
 .gallery-item:hover {
@@ -884,6 +905,7 @@ nav ul li a.active::after {
   justify-content: center;
   border: 1px solid #fb8c8c;
   transition: all 0.4s ease;
+  height: 100%;
   min-height: 280px;
 }
 
